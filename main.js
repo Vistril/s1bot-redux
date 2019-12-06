@@ -1,12 +1,28 @@
 const client = new (require('discord.js')).Client();
-const { randomFace, randomUser } = new (require('./worker.js'))();
 const token = require('fs').readFileSync('./token.txt').toString();
 const triggers = ['<@652373244539699200>', '<@!652373244539699200>', "@someone"];
-client.on('a', m => {
+const randomUser = (i) => {
+    let mem = i.guild.members.map(m => m.user.nickname || m.user.username)
+    return "***(" + mem[~~(Math.random() * mem.length)] + ")***"
+}
+const randomFace = () => {
+    let faces = ['( ͡° ͜ʖ ͡°)', `̿̿ ̿̿ ̿̿ ̿'̿'\̵͇̿̿\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿`, `༼ つ ◕_◕ ༽つ`, `(づ｡◕‿‿◕｡)づ`, `(ಥ﹏ಥ)`, `(ノಠ益ಠ)ノ彡┻━┻`, `¯\\_(ツ)_/¯`];
+    return "**" + faces[~~(Math.random() * faces.length)] + "**"
+}
+client.on('ready', () => {
+    client.user.setActivity('with @someone! | ' + client.guilds.size + ' guilds.');
+})
+client.on('message', m => {
+    console.log(m.content);
     let first = m.content.split(' ')[0].toLowerCase();
-    let second = m.content.substring(cmd.length).trim();
+    let second = m.content.substring(first.length).trim();
     if (triggers.includes(first)) {
-        m.reply(`${randomFace(m)} ${randomUser(m)} ${second}`);
+        m.reply(`${randomFace()} ${randomUser(m)} ${second}`);   
+    }
+    if (first == 's1-help') {
+        m.reply(':warning: Hello! The bot is still under some construction, so the help command is mostly empty for now!\nCurrent Commands: `@someone`, `s1-ping`');
+    } else if (first == 's1-ping') {
+        m.channel.send('Response time to Discord: ' + Math.round(client.ping) + 'ms');
     }
 })
 
