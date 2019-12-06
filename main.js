@@ -1,6 +1,6 @@
 //Minimalist as possible. The original goal.
 const client = new (require('discord.js')).Client();
-const { randomFace, randomUser } = new (require('./worker.js'))
+const { randomFace, randomUser } = new (require('./worker.js'))();
 const token = process.env.TOKEN;
 const triggers = ['<@652373244539699200>', '<@!652373244539699200>', "@someone"];
 client.on('a', m => {
