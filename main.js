@@ -1,3 +1,4 @@
+require('dotenv').config()
 //Minimalist as possible. The original goal.
 const client = new (require('discord.js')).Client();
 const { randomFace, randomUser } = new (require('./worker.js'))();
