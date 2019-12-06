@@ -2,7 +2,7 @@ class s1Tools {
     constructor() { /*not needed?*/ }
 
     randomUser(i) {
-        return "***(" + i.guild.members.map(m => m.displayName || m.username) + ")***"
+        return "***(" + i.guild.members.map(m => m.nickname || m.username) + ")***"
     }
 
     randomFace(i) {

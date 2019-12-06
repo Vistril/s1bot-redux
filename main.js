@@ -1,8 +1,7 @@
-require('dotenv').config()
-//Minimalist as possible. The original goal.
+
 const client = new (require('discord.js')).Client();
 const { randomFace, randomUser } = new (require('./worker.js'))();
-const token = process.env.TOKEN;
+const token = require('fs').readFileSync('token.txt', {encoding: 'utf8'});
 const triggers = ['<@652373244539699200>', '<@!652373244539699200>', "@someone"];
 client.on('a', m => {
     let first = m.content.split(' ')[0].toLowerCase();
