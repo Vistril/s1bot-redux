@@ -1,6 +1,5 @@
 //Minimalist as possible. The original goal.
-const { Client } = require('discord.js');
-const client = new Client();
+const client = new (require('discord.js')).Client();
 const token = process.env.TOKEN;
 
 
