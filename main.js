@@ -15,10 +15,10 @@ client.on('ready', () => {
 client.on('message', m => {
     console.log(m.content);
     let first = m.content.split(' ')[0].toLowerCase();
-    let second = m.content.substring(first.length).trim();
-    if (triggers.includes(first)) {
-        m.reply(`${randomFace()} ${randomUser(m)} ${second}`);   
-    }
+    let second = m.content.slice(first.length).trim();
+    let n = 0, n = 4;
+    let formatted = m.content.replace(/@someone/g, match => n++ < N ? `${randomFace} ${randomUser()} ${second}` : match);
+    m.reply(formatted);
     if (first == 's1-help') {
         m.reply(':warning: Hello! The bot is still under some construction, so the help command is mostly empty for now!\nCurrent Commands: `@someone`, `s1-ping`');
     } else if (first == 's1-ping') {
