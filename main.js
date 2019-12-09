@@ -16,7 +16,7 @@ client.on('message', m => {
     console.log(m.content);
     let first = m.content.split(' ')[0].toLowerCase();
     let second = m.content.slice(first.length).trim();
-    let a = 0, b = 4;
+    let a = 0, b = 10;
     let formatted = m.content.replace(/@someone/g, match => a++ < b ? `${randomFace} ${randomUser()} ${second}` : match);
     m.reply(formatted);
     if (first == 's1-help') {
