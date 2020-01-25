@@ -24,8 +24,11 @@ client.on('message', m => {
             console.log(m.author + ' used command');
         })
         .catch(() => {});
-    first == "s1-help" ? m.reply('helpe') : "";
-    first == "s1-ping" ? m.reply('ping') : ""; 
+   if (first == "s1-help") {
+     m.reply("The bot is under construction for now, so the only commands are @someone and s1-ping!");
+   } else if (first == "s1-ping") {
+     m.reply("Bot response to Discord " + ~~client.ping);
+   }
 })
 
 client.login(token);
