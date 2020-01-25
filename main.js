@@ -1,5 +1,5 @@
 const client = new (require('discord.js')).Client();
-const token = require('fs').readFileSync('./token.txt').toString();
+const token = require('fs').readFileSync('./token.txt').toString().replace(/\n/g, '');
 const triggers = ['<@652373244539699200>', '<@!652373244539699200>', "@someone"];
 const randomUser = (i) => {
     let mem = i.guild.members.map(m => m.user.nickname || m.user.username)
